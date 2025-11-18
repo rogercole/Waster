@@ -694,173 +694,6 @@
         text-align: center;
       }
     }
-    /* Hero card panels */
-.hero-panel {
-  display: none;
-  animation: heroFade 0.22s ease-out;
-}
-
-.hero-panel--active {
-  display: block;
-}
-
-@keyframes heroFade {
-  from {
-    opacity: 0;
-    transform: translateY(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Make dots clickable buttons look like the original dots */
-.dot-row button.dot {
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-/* Chart styles */
-.hero-chart-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.75rem;
-  align-items: flex-start;
-  margin-bottom: 0.7rem;
-}
-
-.hero-chart-legend {
-  display: flex;
-  gap: 0.75rem;
-  font-size: 0.75rem;
-  color: var(--muted);
-  flex-wrap: wrap;
-}
-
-.legend-swatch {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  margin-right: 0.25rem;
-  border: 1px solid #d0d0d0;
-}
-
-.legend-swatch--soil {
-  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
-}
-
-.legend-swatch--tank {
-  background: #ffffff;
-  border-style: dashed;
-}
-
-.hero-chart {
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  padding: 0.65rem 0.7rem 0.55rem;
-  background: #ffffff;
-}
-
-.hero-chart-row {
-  height: 52px;
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 0.4rem;
-}
-
-.hero-chart-row--tank {
-  opacity: 0.9;
-}
-
-.hero-chart-bars {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 3px;
-}
-
-.hero-chart-bars span {
-  flex: 1;
-  border-radius: 999px;
-  background: #e4e4e4;
-}
-
-.hero-chart-bars--soil span {
-  background: linear-gradient(180deg, var(--accent-soft), var(--accent));
-}
-
-.hero-chart-bars--tank span {
-  background: #f2f2f2;
-  border: 1px solid #dedede;
-}
-
-.hero-chart-xaxis {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.7rem;
-  color: var(--muted);
-}
-
-/* HACCP table styles */
-.hero-haccp-header {
-  margin-bottom: 0.6rem;
-}
-
-.hero-haccp-table-wrapper {
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: #ffffff;
-  padding: 0.5rem 0.6rem;
-  margin-bottom: 0.5rem;
-  max-height: 152px;
-  overflow: hidden;
-}
-
-.hero-haccp-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.78rem;
-}
-
-.hero-haccp-table th,
-.hero-haccp-table td {
-  padding: 0.25rem 0.15rem;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.hero-haccp-table thead th {
-  border-bottom: 1px solid #e0e0e0;
-  font-weight: 600;
-}
-
-.hero-haccp-table tbody tr:nth-child(even) {
-  background: #fafafa;
-}
-
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.1rem 0.4rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  border: 1px solid #d0d0d0;
-}
-
-.status-pill--ok {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.status-pill--warn {
-  border-color: #c58b00;
-  color: #c58b00;
-}
-
   </style>
 </head>
 <body>
@@ -938,172 +771,52 @@
               Serving the South West and Great Southern regions
             </div>
           </div>
+
           <aside class="hero-card" aria-label="Example farm dashboard">
-  <div class="hero-card-header">
-    <span style="font-size:0.85rem;font-weight:600;">Live farm overview</span>
-    <div class="dot-row" role="tablist" aria-label="Dashboard views">
-      <button
-        class="dot dot--active"
-        type="button"
-        data-hero-dot
-        aria-label="Overview"
-        aria-controls="hero-panel-overview"
-      ></button>
-      <button
-        class="dot"
-        type="button"
-        data-hero-dot
-        aria-label="Trends"
-        aria-controls="hero-panel-trends"
-      ></button>
-      <button
-        class="dot"
-        type="button"
-        data-hero-dot
-        aria-label="HACCP log"
-        aria-controls="hero-panel-haccp"
-      ></button>
-    </div>
-  </div>
+            <div class="hero-card-header">
+              <span style="font-size:0.85rem;font-weight:600;">Farm Overview</span>
+              <div class="dot-row">
+                <div class="dot dot--active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
 
-  <!-- Panel 1: Overview (current style, slightly refined) -->
-  <div class="hero-panel hero-panel--active" id="hero-panel-overview" role="tabpanel">
-    <div class="hero-metric-grid">
-      <div class="metric">
-        <div class="metric-label">Soil moisture</div>
-        <div class="metric-value">24&nbsp;% @ 15&nbsp;cm</div>
-        <div class="metric-pill">
-          <span></span> Target band 18–28&nbsp;%
-        </div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Tank levels</div>
-        <div class="metric-value">3 / 4 full</div>
-        <div class="metric-pill">
-          <span></span> Auto-alert below 25&nbsp;%
-        </div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Irrigation status</div>
-        <div class="metric-value">Block 3 running</div>
-        <div class="metric-pill">
-          <span></span> Remote start/stop
-        </div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">Cold-room temp</div>
-        <div class="metric-value">1.8&nbsp;°C</div>
-        <div class="metric-pill">
-          <span></span> HACCP logging enabled
-        </div>
-      </div>
-    </div>
-    <div class="hero-note">
-      Typical “at a glance” overview from our dashboards – the exact tiles and labels are tailored to your
-      property.
-    </div>
-  </div>
+            <div class="hero-metric-grid">
+              <div class="metric">
+                <div class="metric-label">Soil moisture</div>
+                <div class="metric-value">24&nbsp;% @ 15&nbsp;cm</div>
+                <div class="metric-pill">
+                  <span></span> Target band 18–28&nbsp;%
+                </div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Tank level</div>
+                <div class="metric-value">3 / 4 full</div>
+                <div class="metric-pill">
+                  <span></span> Auto-alert below 25&nbsp;%
+                </div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Irrigation status</div>
+                <div class="metric-value">Block 3 running</div>
+                <div class="metric-pill">
+                  <span></span> Remote start/stop
+                </div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Cold-room temp</div>
+                <div class="metric-value">1.8&nbsp;°C</div>
+                <div class="metric-pill">
+                  <span></span> HACCP logging enabled
+                </div>
+              </div>
+            </div>
 
-  <!-- Panel 2: Simple trend chart -->
-  <div class="hero-panel" id="hero-panel-trends" role="tabpanel" aria-hidden="true">
-    <div class="hero-chart-header">
-      <div>
-        <div class="metric-label">Last 24 hours</div>
-        <div style="font-size:0.9rem;font-weight:600;">Soil moisture &amp; tank level</div>
-      </div>
-      <div class="hero-chart-legend">
-        <span><span class="legend-swatch legend-swatch--soil"></span>Soil moisture</span>
-        <span><span class="legend-swatch legend-swatch--tank"></span>Tank level</span>
-      </div>
-    </div>
-
-    <div class="hero-chart">
-      <div class="hero-chart-row">
-        <div class="hero-chart-bars hero-chart-bars--soil">
-          <span style="height:38%;"></span>
-          <span style="height:45%;"></span>
-          <span style="height:52%;"></span>
-          <span style="height:60%;"></span>
-          <span style="height:55%;"></span>
-          <span style="height:48%;"></span>
-          <span style="height:40%;"></span>
-        </div>
-      </div>
-      <div class="hero-chart-row hero-chart-row--tank">
-        <div class="hero-chart-bars hero-chart-bars--tank">
-          <span style="height:80%;"></span>
-          <span style="height:76%;"></span>
-          <span style="height:72%;"></span>
-          <span style="height:70%;"></span>
-          <span style="height:68%;"></span>
-          <span style="height:65%;"></span>
-          <span style="height:62%;"></span>
-        </div>
-      </div>
-      <div class="hero-chart-xaxis">
-        <span>06:00</span>
-        <span>12:00</span>
-        <span>18:00</span>
-        <span>Now</span>
-      </div>
-    </div>
-
-    <div class="hero-note">
-      Example visual of moisture and storage over a day – your live view can show the paddocks, tanks and
-      timeframes that matter.
-    </div>
-  </div>
-
-  <!-- Panel 3: HACCP-style temperature log -->
-  <div class="hero-panel" id="hero-panel-haccp" role="tabpanel" aria-hidden="true">
-    <div class="hero-haccp-header">
-      <div class="metric-label">Sample HACCP log</div>
-      <div style="font-size:0.9rem;font-weight:600;">Cold-room temperature checks</div>
-    </div>
-
-    <div class="hero-haccp-table-wrapper" aria-label="Example temperature log table">
-      <table class="hero-haccp-table">
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Room</th>
-            <th>Temp</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>06:15</td>
-            <td>CR-01</td>
-            <td>1.6&nbsp;°C</td>
-            <td><span class="status-pill status-pill--ok">OK</span></td>
-          </tr>
-          <tr>
-            <td>10:30</td>
-            <td>CR-01</td>
-            <td>1.9&nbsp;°C</td>
-            <td><span class="status-pill status-pill--ok">OK</span></td>
-          </tr>
-          <tr>
-            <td>14:45</td>
-            <td>CR-02</td>
-            <td>3.8&nbsp;°C</td>
-            <td><span class="status-pill status-pill--warn">Check</span></td>
-          </tr>
-          <tr>
-            <td>18:05</td>
-            <td>CR-01</td>
-            <td>2.1&nbsp;°C</td>
-            <td><span class="status-pill status-pill--ok">OK</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="hero-note">
-      Example HACCP-ready logging – full history can be exported for audits and compliance.
-    </div>
-  </div>
+            <div class="hero-note">
+              The view from our monitoring dashboards is tailored to your property, infrastructure and
+              compliance requirements.
+            </div>
           </aside>
         </div>
       </div>
@@ -1151,7 +864,7 @@
               <li>Tank and dam level sensors</li>
               <li>Flow, pressure & leak detection</li>
               <li>Pump and bore status & faults</li>
-              <li>Remote irrigation start/stop</li>
+              <li>Remote irrigation start/stop & scheduling</li>
             </ul>
           </article>
 
@@ -1162,9 +875,9 @@
               Protect quality from harvest through storage and transport with continuous temperature history.
             </p>
             <ul>
-              <li>Cool-room and chiller monitoring</li>
-              <li>HACCP-ready temp logging</li>
-              <li>Alerts on temperature excursions</li>
+              <li>Cool-room monitoring</li>
+              <li>HACCP-ready temp logging & certified devices</li>
+              <li>Alert on out-of-range temperatures</li>
               <li>Asset and gate status monitoring</li>
             </ul>
           </article>
@@ -1179,7 +892,7 @@
           <div>
             <h2>How it works</h2>
             <p>
-              We follow a simple, engineering-led process that starts with your paddocks and ends with usable data.
+              We follow a simple, systems engineering-led process that starts with your paddocks and ends with usable data.
             </p>
           </div>
         </div>
@@ -1213,7 +926,7 @@
                 <div class="step-title">Monitor, refine & support</div>
                 <div class="step-text">
                   Once the system is live, we help refine alert logic, reporting and integrations (e.g. with
-                  existing BMS, SCADA or farm records) and provide ongoing support.
+                  existing control systems, farm records, and management platforms) and provide ongoing support.
                 </div>
               </li>
             </ol>
@@ -1231,7 +944,7 @@
             </div>
             <div class="stack-row">
               <span>Data & logic</span>
-              <span>Node-RED and time-series databases for rules, alerting, and long-term trends.</span>
+              <span>Event based workflow engines and time-series databases for rules, alerting, and long-term trends.</span>
             </div>
             <div class="stack-row">
               <span>Dashboards</span>
@@ -1239,7 +952,7 @@
             </div>
             <div class="stack-row">
               <span>Integration</span>
-              <span>Options to connect to existing building management or SCADA systems where needed.</span>
+              <span>Options to connect to existing control systems and management platforms where needed.</span>
             </div>
           </aside>
         </div>
@@ -1429,12 +1142,11 @@
     </div>
   </footer>
 
-<script>
-  // Mobile nav toggle
-  const navToggle = document.getElementById("navToggle");
-  const navMobile = document.getElementById("navMobile");
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navMobile = document.getElementById("navMobile");
 
-  if (navToggle && navMobile) {
     navToggle.addEventListener("click", () => {
       const isOpen = navMobile.style.display === "flex";
       navMobile.style.display = isOpen ? "none" : "flex";
@@ -1463,60 +1175,9 @@
         spans[2].style.transform = "";
       }
     });
-  }
 
-  // Dynamic year
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-
-  // Hero card: panel switching + timed rotation
-  const heroPanels = document.querySelectorAll(".hero-panel");
-  const heroDots = document.querySelectorAll("[data-hero-dot]");
-  let heroIndex = 0;
-  let heroTimer = null;
-
-  function showHeroPanel(index, userInitiated) {
-    heroPanels.forEach((panel, i) => {
-      const isActive = i === index;
-      panel.classList.toggle("hero-panel--active", isActive);
-      panel.setAttribute("aria-hidden", isActive ? "false" : "true");
-    });
-
-    heroDots.forEach((dot, i) => {
-      dot.classList.toggle("dot--active", i === index);
-    });
-
-    heroIndex = index;
-
-    if (userInitiated) {
-      resetHeroTimer();
-    }
-  }
-
-  function nextHeroPanel() {
-    if (!heroPanels.length) return;
-    const next = (heroIndex + 1) % heroPanels.length;
-    showHeroPanel(next, false);
-  }
-
-  function resetHeroTimer() {
-    if (heroTimer) {
-      clearInterval(heroTimer);
-    }
-    // Rotate every 9 seconds
-    heroTimer = setInterval(nextHeroPanel, 9000);
-  }
-
-  if (heroPanels.length && heroDots.length) {
-    heroDots.forEach((dot, index) => {
-      dot.addEventListener("click", () => showHeroPanel(index, true));
-    });
-
-    // Start auto-rotation
-    resetHeroTimer();
-  }
-</script>
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
